@@ -18,7 +18,9 @@ def req_groq_langchain(role, msg):
 
     chain = LLMChain(llm=chat, prompt=prompt, memory=memory)
 
-    print(chain.invoke({"text": f"{msg}"}))
+    output = chain.invoke({"text": f"{msg}"})
+    print(output)
+    return output
     
 if __name__ == "__main__":
     req_groq_langchain(Roles.IDEATION_ROADMAP, "I am starting a facebook clone called netbox")
