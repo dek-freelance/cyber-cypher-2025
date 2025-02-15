@@ -1,5 +1,4 @@
 from src.config.db import db
-from src.config.constants import User
 import src.global_vars
 
 async def login_func(username:str, password:str):

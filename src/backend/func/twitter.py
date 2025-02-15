@@ -14,5 +14,3 @@ def make_tweet(tweet:str):
     print(post_result)
     # except:
     #     print("FAILED TO POST A TWEET")
-
-make_tweet("TEST2!!!!")
