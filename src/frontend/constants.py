@@ -13,7 +13,7 @@ from enum import Enum
 
 class Roles(Enum):
     IDEATION_SWOT = (
-        "Analyze the given startup idea using SWOT:\n"
+        "Analyze the given startup idea using SWOT in detail:\n"
         "Strengths: Internal advantages and unique capabilities.\n"
         "Weaknesses: Limitations and areas for improvement.\n"
         "Opportunities: Market trends and growth potential.\n"

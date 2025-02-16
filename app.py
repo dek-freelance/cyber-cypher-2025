@@ -3,6 +3,7 @@ import uvicorn
 from pydantic import BaseModel
 from src.config.constants import RolesNum, Roles
 from src.backend.groq_chat import req_groq_langchain
+from src.backend.func.twitter import make_tweet
 
 app = FastAPI()
 
@@ -12,7 +13,10 @@ class ChatMsg(BaseModel):
 
 @app.post("/api/v1/chatgroq")
 async def root(data: ChatMsg):
-    ans = req_groq_langchain(RolesNum[data.role], data.msg)
+    print(RolesNum[data.role].value)
+    ans = req_groq_langchain(RolesNum[data.role].value, data.msg)
+    if data.role == 10:
+        make_tweet(ans['text'])
     return {ans}
 
 def main():
