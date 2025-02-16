@@ -6,6 +6,21 @@ st.set_page_config(page_title="Tasks", layout="centered")
 
 st.title("💬 Chatbot powered by Groq & LangChain")
 
+RolesNum = {
+    "8": "Progress Tracker",
+    "9": "Auto Emailer",
+    "10": "Social Media Poster",
+}
+
+# Dropdown for selecting role
+
+selected_role_key = st.selectbox("Select an Task Role:", list(RolesNum.values()))
+selected_role = selected_role_key
+
+keyArray = [key for key, val in RolesNum.items() if val == selected_role]
+roleVariable = keyArray[0]
+st.write(roleVariable)
+
 # Initialize session state for chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
