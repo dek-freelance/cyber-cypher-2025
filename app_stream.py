@@ -4,7 +4,8 @@ from src.config.constants import Roles
 
 st.set_page_config(page_title="Chatbot with Groq & LangChain", layout="centered")
 
-st.title("💬 Chatbot powered by Groq & LangChain")
+st.title("Founderella AI Assistance")
+
 
 # Initialize session state for chat history
 if "messages" not in st.session_state:

@@ -5,7 +5,8 @@ import pages.gvars
 
 st.set_page_config(page_title="Tasks", layout="centered")
 
-st.title("💬 Chatbot powered by Groq & LangChain")
+st.title("Founderella AI Assistance")
+
 
 RolesNum = {
     "8": "Progress Tracker",

@@ -5,7 +5,18 @@ import pages.gvars
 
 st.set_page_config(page_title="Ideation", layout="centered")
 # i = 1
-st.title("💬 Chatbot powered by Groq & LangChain")
+
+hide_menu_style = """
+    <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    </style>
+"""
+st.markdown(hide_menu_style, unsafe_allow_html=True)
+
+
+st.title("Founderella AI Assistance")
+
 # if(pages.gvars.inp and i==1):
 #     i=i+1
 #     url = 'http://localhost:8001/api/v1/chatgroq'
