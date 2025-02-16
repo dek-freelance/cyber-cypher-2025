@@ -1,6 +1,7 @@
 import streamlit as st
 import time
 st.set_page_config(page_title="Chatbot with Groq & LangChain", layout="wide")
+import pages.gvars
 # Custom CSS for styling
 st.markdown(
     """
@@ -57,6 +58,8 @@ with col2:
 # Handle button click
 if submit and user_input:
     st.success(f"Processing: {user_input}")
+    # st.session_state["user_input"] = user_input
+    pages.gvars.inp = user_input
 
     # Show progress bar when button is clicked
     progress_bar = st.progress(0)
@@ -70,7 +73,7 @@ if submit and user_input:
 
     st.markdown('<meta http-equiv="refresh" content="0; URL=http://localhost:3000/ideation.html">', unsafe_allow_html=True)
 
-st.sidebar.page_link("pages/ideation.py", label="Ideation", icon="💡")
+st.sidebar.page_link("pages/ideation.py", label="Ideation", icon="💡", )
 st.sidebar.page_link("pages/funding.py", label="Funding", icon="💰")
 st.sidebar.page_link("pages/tasks.py", label="Tasks", icon="📋")
 

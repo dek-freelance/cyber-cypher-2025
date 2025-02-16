@@ -1,6 +1,7 @@
 import streamlit as st
 import requests
 import json
+import pages.gvars
 
 st.set_page_config(page_title="Tasks", layout="centered")
 
@@ -19,7 +20,6 @@ selected_role = selected_role_key
 
 keyArray = [key for key, val in RolesNum.items() if val == selected_role]
 roleVariable = keyArray[0]
-st.write(roleVariable)
 
 # Initialize session state for chat history
 if "messages" not in st.session_state:
@@ -38,7 +38,7 @@ if user_input := st.chat_input("Type your message..."):
         st.markdown(user_input)
 
     url = 'http://localhost:8001/api/v1/chatgroq'
-    myobj = {'role': '1', 'msg': user_input}
+    myobj = {'role': roleVariable, 'msg': pages.gvars.inp + ", " + user_input}
     response = requests.post(url, json = myobj)
     response = response.json()[0].strip('["]')
 

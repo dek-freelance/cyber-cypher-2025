@@ -1,10 +1,21 @@
 import streamlit as st
 import requests
 import json
+import pages.gvars
 
 st.set_page_config(page_title="Ideation", layout="centered")
-
+# i = 1
 st.title("💬 Chatbot powered by Groq & LangChain")
+# if(pages.gvars.inp and i==1):
+#     i=i+1
+#     url = 'http://localhost:8001/api/v1/chatgroq'
+#     myobj = {'role': '1', 'msg': pages.gvars.inp}
+#     response = requests.post(url, json = myobj)
+#     response = response.json()[0].strip('["]')
+#     if "messages" not in st.session_state:
+#         st.session_state.messages = []
+#     st.session_state.messages.append({"role": "assistant", "content": response})
+
 
 RolesNum = {
     "1": "SWOT Analysis",
@@ -19,7 +30,6 @@ selected_role = selected_role_key
 
 keyArray = [key for key, val in RolesNum.items() if val == selected_role]
 roleVariable = keyArray[0]
-st.write(roleVariable)
 
 st.write(f"**Selected Role:** {selected_role}")
 # Initialize session state for chat history
@@ -39,7 +49,8 @@ if user_input := st.chat_input("Type your message..."):
         st.markdown(user_input)
 
     url = 'http://localhost:8001/api/v1/chatgroq'
-    myobj = {'role': '1', 'msg': user_input}
+    print("inp: ", pages.gvars.inp)
+    myobj = {'role': roleVariable, 'msg': pages.gvars.inp + ", " + user_input}
     response = requests.post(url, json = myobj)
     response = response.json()[0].strip('["]')
 

@@ -14,9 +14,10 @@ class ChatMsg(BaseModel):
 @app.post("/api/v1/chatgroq")
 async def root(data: ChatMsg):
     print(RolesNum[data.role].value)
+    print(data.role)
     ans = req_groq_langchain(RolesNum[data.role].value, data.msg)
-    if data.role == 10:
-        make_tweet(ans['text'])
+    if data.role == "10":
+        make_tweet(ans)
     return {ans}
 
 def main():
