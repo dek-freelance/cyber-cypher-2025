@@ -20,7 +20,7 @@ def req_groq_langchain(role, msg):
 
     output = chain.invoke({"text": f"{msg}"})
     print(output)
-    return output
+    return output["text"]
     
 if __name__ == "__main__":
     req_groq_langchain(Roles.IDEATION_ROADMAP, "I am starting a facebook clone called netbox")
